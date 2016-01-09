@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>pl.lust.englishteacher</groupId>
+    <artifactId>english-teacher</artifactId>
+    <version>${project-version}</version>
+  </parent>
+  <artifactId>english-teacher-gui</artifactId>
+  <packaging>war</packaging>
+  <name>English Teacher GUI</name>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>pl.lust.englishteacher</groupId>
+            <artifactId>english-teacher-service</artifactId>
+            <version>${project-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.lust.englishteacher</groupId>
+            <artifactId>english-teacher-gui-commons</artifactId>
+            <version>${project-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>english-teacher</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>cmd</executable>
+                            <arguments>
+                                <argument>/c</argument>
+                                <argument>npm.cmd</argument>
+                                <argument>install</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
